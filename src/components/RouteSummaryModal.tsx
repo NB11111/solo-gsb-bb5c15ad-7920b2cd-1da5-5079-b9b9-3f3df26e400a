@@ -146,7 +146,7 @@ export default function RouteSummaryModal({ plan, onClose }: Props) {
   };
 
   return (
-    <div className="modal-backdrop" onClick={onClose}>
+    <div className="modal-backdrop readonly-backdrop" onClick={onClose}>
       <div className="modal wide summary-modal" onClick={(e) => e.stopPropagation()}>
         <h3>路由汇总</h3>
         <p className="muted">

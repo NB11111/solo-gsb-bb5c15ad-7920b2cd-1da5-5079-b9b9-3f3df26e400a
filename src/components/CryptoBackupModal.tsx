@@ -39,7 +39,7 @@ export default function CryptoBackupModal({ mode, fileName, onSubmit, onClose }:
   };
 
   return (
-    <div className="modal-backdrop" onClick={onClose}>
+    <div className="modal-backdrop readonly-backdrop" onClick={onClose}>
       <div className="modal" onClick={(e) => e.stopPropagation()}>
         <h3>{isExport ? '导出加密备份' : '导入加密备份'}</h3>
         <p className="muted">

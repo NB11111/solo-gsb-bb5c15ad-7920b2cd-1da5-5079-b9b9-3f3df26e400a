@@ -79,7 +79,7 @@ export default function PlanDiffModal({ plan, onClose }: Props) {
   };
 
   return (
-    <div className="modal-backdrop" onClick={onClose}>
+    <div className="modal-backdrop readonly-backdrop" onClick={onClose}>
       <div className="modal wide" onClick={(e) => e.stopPropagation()}>
         <h3>规划差异报告</h3>
         <p className="muted">

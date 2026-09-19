@@ -805,8 +805,25 @@ tr.summary-reserved-row td {
   pointer-events: auto;
 }
 
+/* 冲突遮罩整体不拦截指针事件：
+   - 弹窗本体恢复 auto，两个选择按钮可正常点击；
+   - 遮罩其余区域放行给下层——编辑区仍由 .layout.locked 的 pointer-events:none
+     锁定，而分配清单（.panel-unlocked-readonly）中的只读「无类路由」入口
+     可在冲突期间打开（其弹窗层级 .csr-backdrop: 320 高于本遮罩 300）。 */
 .conflict-backdrop {
   z-index: 300;
+  pointer-events: none;
+}
+
+.conflict-backdrop .modal {
+  pointer-events: auto;
+}
+
+/* 冲突期间仍可用的只读工具弹窗（前缀策略、观测审计、路由汇总、差异报告、
+   加密导出）：层级置于冲突弹窗（z-index 300）之上；
+   无类路由弹窗（320）仍在其之上，启动遮罩（400）最高。 */
+.readonly-backdrop {
+  z-index: 310;
 }
 
 .conflict-sides {

@@ -101,7 +101,13 @@ export default function ClasslessRouteModal({ alloc, onClose }: Props) {
 
   return (
     <div className="modal-backdrop csr-backdrop" onClick={onClose}>
-      <div className="modal wide csr-modal" onClick={(e) => e.stopPropagation()}>
+      <div
+        className="modal wide csr-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-label={`DHCP 类无静态路由（Option 121）：${alloc.name}`}
+        onClick={(e) => e.stopPropagation()}
+      >
         <h3>DHCP 类无静态路由（Option 121）：{alloc.name}</h3>
         <p className="muted">
           子网 <code>{alloc.cidr}</code>，下一跳可用范围{' '}

@@ -67,7 +67,7 @@ export default function PrefixPolicyModal({ allocations, onClose }: Props) {
   };
 
   return (
-    <div className="modal-backdrop" onClick={onClose}>
+    <div className="modal-backdrop readonly-backdrop" onClick={onClose}>
       <div className="modal wide" onClick={(e) => e.stopPropagation()}>
         <h3>前缀策略校验</h3>
         <p className="muted">
