@@ -805,8 +805,18 @@ tr.summary-reserved-row td {
   pointer-events: auto;
 }
 
+/*
+ * 冲突遮罩本身不参与命中检测：锁定时只读工具（分配清单「无类路由」、
+ * 工具栏只读校验/导出等）需要透过遮罩点击；弹窗本体恢复交互。
+ * 会修改规划的入口由 React 的 disabled 属性锁定（调整容量/释放/DHCP 池等）。
+ */
 .conflict-backdrop {
   z-index: 300;
+  pointer-events: none;
+}
+
+.conflict-backdrop .modal {
+  pointer-events: auto;
 }
 
 .conflict-sides {
@@ -857,7 +867,8 @@ tr.summary-reserved-row td {
 }
 
 /* ---- DHCP 类无静态路由（Option 121） ---- */
-/* 冲突锁定期间亦可打开：层级置于冲突弹窗（z-index 300）之上、启动遮罩（400）之下 */
+/* 冲突锁定期间亦可打开：层级置于冲突弹窗（z-index 300）之上、启动遮罩（400）之下；
+   弹窗打开时其背板拦截冲突弹窗的点击，关闭后原冲突遮罩与锁定状态保持不变 */
 .csr-backdrop {
   z-index: 320;
 }
